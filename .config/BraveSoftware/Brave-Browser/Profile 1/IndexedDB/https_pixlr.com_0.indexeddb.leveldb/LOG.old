@@ -1,0 +1,6 @@
+2021/08/26-18:08:26.314 a9a2d Creating DB /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_pixlr.com_0.indexeddb.leveldb since it was missing.
+2021/08/26-18:08:26.319 a9a2d Reusing MANIFEST /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_pixlr.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/08/26-18:08:37.249 9daff Level-0 table #5: started
+2021/08/26-18:08:37.250 9daff Level-0 table #5: 5262 bytes OK
+2021/08/26-18:08:37.251 9daff Delete type=0 #3
+2021/08/26-18:08:37.252 9daff Manual compaction at level-0 from (begin) .. (end); will stop at (end)

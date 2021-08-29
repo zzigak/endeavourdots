@@ -1,0 +1,42 @@
+2021/08/25-19:52:19.558 72aa Reusing MANIFEST /home/zileto/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/08/25-19:52:19.558 72aa Recovering log #3
+2021/08/25-19:52:19.579 72aa Reusing old log /home/zileto/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000003.log 
+2021/08/25-19:52:21.170 72b6 Level-0 table #5: started
+2021/08/25-19:52:21.182 72b6 Level-0 table #5: 958431 bytes OK
+2021/08/25-19:52:21.183 72b6 Delete type=0 #3
+2021/08/25-19:52:21.184 72b6 Manual compaction at level-0 from '\x00\x04\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at (end)
+2021/08/25-19:52:21.201 af32 Level-0 table #7: started
+2021/08/25-19:52:21.203 af32 Level-0 table #7: 2191 bytes OK
+2021/08/25-19:52:21.205 af32 Delete type=0 #4
+2021/08/25-19:52:21.205 af32 Manual compaction at level-0 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)
+2021/08/25-19:52:21.205 af32 Manual compaction at level-1 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0b\x01 \x03\x00\x00\x00\x00\x00\x00\xf0?\x00\x04\x02\x01\x16\x00s\x00e\x00r\x00v\x00i\x00c\x00e\x00:\x00g\x00u\x00i\x00d\x00e\x00:\x00f\x00a\x00l\x00l\x00b\x00a\x00c\x00k\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 8278 : 1
+2021/08/25-19:52:21.205 af32 Compacting 1@1 + 1@2 files
+2021/08/25-19:52:21.210 af32 Generated table #8@1: 400 keys, 27155 bytes
+2021/08/25-19:52:21.210 af32 Compacted 1@1 + 1@2 files => 27155 bytes
+2021/08/25-19:52:21.211 af32 compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/08/25-19:52:21.211 af32 Delete type=2 #7
+2021/08/25-19:52:21.211 af32 Manual compaction at level-1 from '\x00\x0b\x01 \x03\x00\x00\x00\x00\x00\x00\xf0?\x00\x04\x02\x01\x16\x00s\x00e\x00r\x00v\x00i\x00c\x00e\x00:\x00g\x00u\x00i\x00d\x00e\x00:\x00f\x00a\x00l\x00l\x00b\x00a\x00c\x00k\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 8278 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)
+2021/08/25-19:52:21.237 af2d Level-0 table #10: started
+2021/08/25-19:52:21.239 af2d Level-0 table #10: 1859 bytes OK
+2021/08/25-19:52:21.240 af2d Delete type=2 #5
+2021/08/25-19:52:21.240 af2d Delete type=0 #6
+2021/08/25-19:52:21.241 af2d Manual compaction at level-0 from '\x00\x03\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x04\x00\x00\x00' @ 0 : 0; will stop at (end)
+2021/08/25-19:52:21.241 af2d Manual compaction at level-1 from '\x00\x03\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x04\x00\x00\x00' @ 0 : 0; will stop at '\x00\x05\x01\x02\x03\x00\x00\x00\x00\x00`c@' @ 8369 : 0
+2021/08/25-19:52:21.241 af2d Compacting 1@1 + 1@2 files
+2021/08/25-19:52:21.243 af2d Generated table #11@1: 360 keys, 17751 bytes
+2021/08/25-19:52:21.243 af2d Compacted 1@1 + 1@2 files => 17751 bytes
+2021/08/25-19:52:21.244 af2d compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/08/25-19:52:21.245 af2d Manual compaction at level-1 from '\x00\x05\x01\x02\x03\x00\x00\x00\x00\x00`c@' @ 8369 : 0 .. '\x00\x04\x00\x00\x00' @ 0 : 0; will stop at (end)
+2021/08/25-19:52:21.269 af2d Level-0 table #13: started
+2021/08/25-19:52:21.271 af2d Level-0 table #13: 1549 bytes OK
+2021/08/25-19:52:21.273 af2d Delete type=0 #9
+2021/08/25-19:52:21.273 af2d Delete type=2 #8
+2021/08/25-19:52:21.273 af2d Delete type=2 #10
+2021/08/25-19:52:21.273 af2d Manual compaction at level-0 from '\x00\x07\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at (end)
+2021/08/25-19:52:21.273 af2d Manual compaction at level-1 from '\x00\x07\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at '\x00\x07\x00\x00\xc8\x05\x00m\x00e\x00d\x00i\x00a' @ 8506 : 0
+2021/08/25-19:52:21.273 af2d Compacting 1@1 + 1@2 files
+2021/08/25-19:52:21.275 af2d Generated table #14@1: 327 keys, 16882 bytes
+2021/08/25-19:52:21.275 af2d Compacted 1@1 + 1@2 files => 16882 bytes
+2021/08/25-19:52:21.277 af2d compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/08/25-19:52:21.277 af2d Delete type=2 #13
+2021/08/25-19:52:21.277 af2d Manual compaction at level-1 from '\x00\x07\x00\x00\xc8\x05\x00m\x00e\x00d\x00i\x00a' @ 8506 : 0 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at (end)

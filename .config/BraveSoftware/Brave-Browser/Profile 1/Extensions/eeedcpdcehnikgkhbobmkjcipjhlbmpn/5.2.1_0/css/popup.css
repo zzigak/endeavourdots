@@ -1,0 +1,51 @@
+.white-popup {
+  position: relative;
+  background: #F5F5F5;
+  color:black;
+  padding: .4vw;
+  height: 30vw;
+  width: 40vw;
+  margin: 0 auto;
+  border-radius: 0.5vw;
+}
+
+/*
+====== Zoom effect ======
+*/
+
+.mfp-zoom-in {
+  /* start state */
+
+  /* animate in */
+  /* animate out */
+}
+
+.mfp-content {
+  perspective: 2000px;
+}
+
+.mfp-zoom-in .mfp-with-anim {
+  opacity: 0;
+  transition: all .4s ease-in-out;
+  transform: rotateX(-90deg);
+}
+.mfp-zoom-in.mfp-bg {
+  opacity: 0;
+  transition: all .4s ease-out;
+}
+.mfp-zoom-in.mfp-ready .mfp-with-anim {
+  opacity: 1;
+  transform: scale(1);
+}
+.mfp-zoom-in.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+.mfp-zoom-in.mfp-removing .mfp-with-anim {
+  transform: rotateX(-90deg);
+  opacity: 0;
+}
+.mfp-zoom-in.mfp-removing.mfp-bg {
+
+  transition: all .8s ease-out;
+  opacity: 0;
+}

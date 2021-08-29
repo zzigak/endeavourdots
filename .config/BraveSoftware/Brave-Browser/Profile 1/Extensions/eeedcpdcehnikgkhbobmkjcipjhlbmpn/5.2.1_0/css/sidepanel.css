@@ -1,0 +1,1322 @@
+*:focus {
+    outline: none;
+}
+
+.sidePanel {
+    width: 50vw;   
+    height: 100%;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: -50vw;
+    background: #F5F5F5;
+    color: black;
+    overflow-x: hidden;
+    transition: 0.5s; 
+}
+
+.sidePanel a {
+    text-decoration: none;
+}
+
+.sidePanel svg {
+    vertical-align: middle;
+    height: 32px;
+    width: 32px;
+    padding-top: 9px;
+    padding-bottom: 12px;
+}
+
+#fadedForeground {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(64, 64, 64, 0.2);
+    z-index: 999;
+}
+/*
+===== SidePanel Nav Bar =====
+*/
+
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height:54px;
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #DADADA;
+    color: white;
+}
+
+#aboutButtonLI {
+    margin-left:10px;
+}
+
+.navBar li {
+    display: inline-block;
+    color: rgb(29, 29, 29);
+    font-size: 14px;
+    text-align:center;
+}
+
+.navBar li a {
+    display: block;
+    color: rgb(29, 29, 29);
+    cursor: pointer;
+    /*transition: color 1s, background 1s;*/
+    text-decoration: none;
+    width: 60px;
+}
+
+.UnpressedButton path {
+    fill: rgb(34, 47, 81);
+}
+
+.UnpressedButton span{
+    color: rgb(34, 47, 81);
+}
+
+#aboutButton.UnpressedButton span:after {
+    content: '';
+}
+
+#updatesButton.UnpressedButton span:after {
+    content: '';
+}
+
+#themeButton.UnpressedButton span:after {
+    content: '';
+}
+
+#donateButton.UnpressedButton span:after {
+    content: '';
+}
+
+#settingsButton.UnpressedButton span:after {
+    content: '';
+}
+
+#aboutButton.PressedButton span:after {
+    content: 'About';
+}
+
+#updatesButton.PressedButton span:after {
+    content: 'Updates';
+}
+
+#themeButton.PressedButton span:after {
+    content: 'Theme';
+}
+
+#donateButton.PressedButton span:after {
+    content: 'Donate';
+}
+
+#settingsButton.PressedButton span:after {
+    content: 'Settings';
+}
+
+#aboutButton:hover span:after {
+    content: 'About';
+}
+
+#updatesButton:hover span:after {
+    content: 'Updates';
+}
+
+#themeButton:hover span:after {
+    content: 'Theme';
+}
+
+#donateButton:hover span:after {
+    content: 'Donate';
+}
+
+#settingsButton:hover span:after {
+    content: 'Settings';
+}
+
+.UnpressedButton:hover {
+    position: relative;
+    top: -7px;
+}
+
+.UnpressedButton:hover path{
+    fill: #00B0FF;
+}
+
+.UnpressedButton:hover span{
+    color: #00B0FF;
+    position: absolute;
+    left: 0px;
+    top: 21px;
+}
+
+.PressedButton path {
+    fill: #0091EA;
+}
+
+.PressedButton span {
+    color: #0091EA;
+    position: absolute;
+    top: 4px;
+    left: 0px;
+}
+
+.PressedButton:hover path {
+    fill: #00B0FF;
+}
+
+.PressedButton:hover span {
+    color: #00B0FF;
+}
+
+
+.PressedButton {
+    position: relative;
+    top: -7px;
+}
+
+.navBar li span {
+    top: 21px;
+    line-height: 55px;
+    width: 60px;
+}
+
+
+
+@media(max-width:970px) {
+.sidePanel #feedback-button {
+    display: none;
+}
+
+.sidePanel #contact-button {
+    display: none;
+}
+}
+
+@media(min-width:971px) {
+.sidePanel #feedback-button {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 153px;
+    font-size: 12px;
+    color: #4CAF50;
+    height: 25px;
+    width: 94px;
+    margin-top:12px;
+    margin-bottom:13px;
+    border-radius: 10px;
+    border: 2px solid #4CAF50;
+    background-color: none;
+}
+
+.sidePanel #contact-button {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 60px;
+    font-size: 12px;
+    color: #4CAF50;
+    height: 25px;
+    width: 84px;
+    margin-top:12px;
+    margin-bottom:13px;
+    border-radius: 10px;
+    border: 2px solid #4CAF50;
+    background-color: none;
+}
+}
+
+.sidePanel .right-navButtons:hover {
+    background-color: #4CAF50;
+}
+.sidePanel .right-navButtons:hover span {
+    color: white;
+}
+.sidePanel .right-navButtons:hover path {
+    fill: white;
+}
+
+.sidePanel .right-navButtons svg {
+    vertical-align: middle;
+    height: 24px;
+    width: 24px;
+    margin-left:3px;
+    padding-top: 0;
+    padding-bottom: 2px;
+}
+
+.sidePanel .right-navButtons svg path {
+    fill: #4CAF50;
+}
+
+.sidePanel .right-navButtons span {
+    line-height: 25px;
+}
+
+.sidePanel #closeButton {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 9999;
+}
+
+.sidePanel #closeButton svg {
+    padding-top:10px;
+    height: 33px;
+    width: 33px;
+}
+
+/*
+===== SidePanel Body =====
+*/
+
+#sidepanelBody {
+    position: absolute;
+    width: 46vw;
+    height: -webkit-calc(100vh - 4vw - 55px);
+    padding: 2vw;
+    font-size: 14px;
+    z-index:1000;
+}
+
+/*
+===== About Body =====
+*/
+
+#banner {
+    position: relative;
+    width: 100%;
+}
+
+#banner-hr {
+    position: relative;
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+}
+
+#aboutContainer {
+    max-height: 100%;
+    overflow: auto;
+    height: -webkit-calc(100vh - 4vw - 300px);
+}
+
+#aboutContent {
+    position: relative;
+    cursor: default;
+}
+
+#uninstallHeader {
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#uninstallText {
+    text-align: right;
+}
+
+#link-label {
+    position: absolute;
+    text-align: right;
+    right: 2vw;
+    bottom: 2.8vw;
+    cursor:default;
+}
+
+#link-input {
+    position: absolute;
+    right: 1.9vw;
+    bottom: 0.6vw;
+    width: 170px;
+    font-size: 18px;
+    cursor: text;
+}
+
+#escLink {
+    color: #0091EA;
+}
+
+/*
+===== Updates Body =====
+*/
+
+#updatesContainer {
+    position: relative;
+    max-height: 100%;
+    overflow: auto;
+}
+
+#updatesContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.version {
+    font-weight: bold;
+    font-size:1vw;
+}
+
+/*
+===== Settings Body =====
+*/
+
+#settingsContainer {
+    text-align: center;
+    max-height: 100%;
+    overflow: auto;
+    height: -webkit-calc(100vh - 4vw - 75px);
+}
+
+#settingsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.segmentedControlLabelHR {
+    position: relative;
+    width: 200px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+}
+
+#chapterSettingsHR {
+    margin-bottom: 20px;
+}
+
+.settingsContainerHR {
+    position: relative;
+    width: 300px;
+    margin-top: 15px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+}
+
+.segmented-control {
+    display:block;
+    margin: 0 auto;
+    width: 400px;
+    color: #0288D1;
+}
+
+.borderless-segmented-control {
+    border: none !important;
+}
+
+input[type=radio]:checked ~ .check {
+    border: 3px solid #0288D1 !important;
+}
+
+input[type=radio]:checked ~ .check::before{
+    background: #0288D1;
+}
+
+.mortalityRadioUL {
+    list-style: none;
+    display: inline-block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+}
+
+.mortalityRadioUL li {
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+.mortalityRadioUL li:hover label{
+    color: #00B0FF;
+}
+
+.mortalityRadioUL li input[type=radio]{
+    display:none;
+}
+
+.mortalityRadioUL li label {
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+}
+
+.mortalityRadioUL li:hover label{
+    color: #00B0FF;
+}
+
+.mortalityRadioUL li:hover .check {
+  border: 3px solid #00B0FF !important;
+}
+
+.mortalityRadioUL li:hover input[type=radio]:checked ~ .check::before{
+    background: #00B0FF;
+}
+
+/*
+===== Timer Settings =====
+*/
+
+#timerSettingsGap {
+    height:10px;
+}
+
+#timerSettingsSegmentedControl {
+    margin-top:0px;
+}
+
+#timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3):before,
+#timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3) ~ label:before {
+  color: #01579B;
+}
+
+#timerSettingsSegmentedControl > input:nth-child(3):checked ~ #extraTimerSettingsSegmentedControl {
+    display: block;
+}
+
+#extraTimerSettingsSegmentedControl {
+    display: none;
+    color: #01579B;
+}
+
+.InputTextfield {
+    font-size: 16px;
+    display: block;
+    border-radius: 5px;
+    height: 22px;
+    padding: 3px 3px;
+    margin-top: 5px;
+    outline-width: 0;
+    border: 1px solid #01579B;
+}
+
+/*
+===== Time Spent Settings =====
+*/
+
+#spentTimerContainer {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
+#onboardingText {
+    display:none;
+    text-align: center;
+    color: #D50000;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding:5px;
+    border:2px solid #D50000;
+    border-radius:5px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+#dobLabel {
+    color: black;
+}
+
+#dobDateContainer.notRed{
+    display: inline-block;
+    margin-top: 4px;
+    padding:5px;
+}
+
+#dobDateContainer.red{
+    display: inline-block;
+    margin-top: 4px;
+    padding:5px;
+    border:2px solid #D50000;
+    border-radius:5px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+#dobInput {
+    margin-top: 8px;
+}
+
+#dobTimeContainer {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
+    width: 110px;
+    margin-left: 30px;
+}
+
+#idealDeathContainer {
+    text-align: center;
+    margin-top:15px;
+    margin-bottom:12px;
+}
+
+#idealDeathInput {
+    bottom: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top:5px;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+    outline-width: 0;
+}
+
+#idealDeathInput::-webkit-outer-spin-button,
+#idealDeathInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#timerTitleContainer {
+    text-align: center;
+    margin-top:15px;
+}
+
+#timerTitleInput {
+    bottom: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top:5px;
+    width:200px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+    outline-width: 0;
+}
+
+/*
+===== Time Left Settings =====
+*/
+
+#leftTimerContainer {
+    display: none;
+    margin-top: 4px;
+}
+
+#specifyDeathCheckboxContainer {
+    text-align: left;
+}
+
+#specifyDeathCheckboxContainer label {
+    width: 198px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+#dodDateContainer {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+#dodInput {
+    margin-top: 8px;
+}
+
+#dodTimeContainer {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
+    width: 110px;
+    margin-left: 30px;
+}
+
+.DisabledLabel {
+    color: rgb(144, 144, 144);
+    cursor: default;
+}
+
+input:disabled {
+    color: rgb(144, 144, 144);
+}
+
+#dailyCountdownCheckboxContainer {
+    width: 237px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.surveyQuestionContainer {
+    margin: 0 auto;
+    width: 380px;
+    height: 30px;
+    line-height: 22px;
+}
+
+#surveyUnitsSegmentedControl {
+    width: 200px;
+    font-size: 10px;
+    margin-bottom:20px;
+}
+
+.surveyQuestionLabel {
+    float: left;
+    margin-right:7px;
+}
+
+.surveyQuestionDropdown {
+    float: right;
+    width: 160px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.surveyQuestionIntegerDropdown {
+    width: 50px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+#heightMetricContainer {
+    width: 220px;
+    display: none;
+}
+
+#heightMeters-container {
+    display: inline-block;
+    float: right;
+}
+
+#heightCM-container {
+    display: inline-block;
+    float: right;
+    margin-left: 15px;
+}
+
+#heightDropdownContainer {
+    width: 220px;
+}
+
+#height-label {
+    display: inline-block;
+}
+
+#heightFeet-container {
+    display: inline-block;
+    float: right;
+}
+
+#heightInches-container {
+    display: inline-block;
+    float: right;
+    margin-left: 15px;
+}
+
+#weightTextfield {
+    float: right;
+    width: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+    -webkit-text-security: disc;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    border: 1px solid #aaa;
+    padding-left:5px;
+}
+
+#weightTextfield::-webkit-outer-spin-button,
+#weightTextfield::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#metricWeightContainer {
+    display:none;
+}
+
+#metricWeightTextfield {
+    float: right;
+    width: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+    -webkit-text-security: disc;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    border: 1px solid #aaa;
+    padding-left:5px;
+}
+
+#metricWeightTextfield::-webkit-outer-spin-button,
+#metricWeightTextfield::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+#timeupMessageContainer {
+    margin-top: 15px;
+}
+
+#timeupMessageContainer div.cs-select {
+    max-width: 180px;
+}
+
+#timerTitleContainer2 {
+    text-align: center;
+    margin-top:15px;
+}
+
+#timerTitleInput2 {
+    bottom: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top:5px;
+    width:200px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+    outline-width: 0;
+}
+
+/*
+===== Clock Timer Settings =====
+*/
+
+#clockTimerContainer {
+    display: none;
+    /*display: inline-block; !!!WHEN DISPLAYING, USE INLINE-BLOCK*/
+    margin: 0 auto;
+}
+
+#twentyFourCheckboxContainer {
+    text-align: left;
+}
+
+#twentyFourCheckboxContainer label {
+    width: 96px;
+    margin: 0 auto;
+}
+
+/*
+===== People Timer Settings =====
+*/
+
+#peopleTimerContainer {
+    display: none;
+}
+
+#peopleTimerList li{
+    height: 25px;
+}
+
+#peopleTimerList li ~ li {
+    margin-left:10px;
+}
+
+#peopleTimerList li input[type=radio]{
+    display:none;
+}
+
+#peopleTimerList li label{
+    top: 2px;
+    padding-right: 27px;
+}
+
+#peopleTimerList .circleRadio .check{
+    display: inline-block;
+    position: absolute;
+    border: 3px solid #AAAAAA;
+    border-radius: 100%;
+    top: 0;
+    right: 0;
+    height: 18px;
+    width: 18px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+#peopleTimerList .circleRadio .check::before {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    border-radius: 100%;
+    height: 10px;
+    width: 10px;
+    top: 4px;
+    left: 4px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+/*
+===== Precision Settings =====
+*/
+
+#precisionContainer {
+    margin-top: 15px;
+}
+
+#smallestPrecisionContainer {
+    margin-bottom:10px;
+}
+
+#largestPrecisionLabel {
+    margin-right:5px;
+}
+#precisionLabel {
+    margin-right:5px;
+}
+
+#clockPrecisionContainer {
+    display: none;
+}
+
+#populationPrecisionContainer {
+    display: none;
+}
+
+#largeFontCheckboxContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 108px;
+}
+
+#decimalPrecisionCheckboxContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 210px;
+    display: none;
+}
+
+/*
+===== Progress Settings =====
+*/
+
+#progressSettingsContainer {
+    text-align: center;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+#hideProgressContainer {
+    position: absolute;
+    display: inline-block;
+    text-align: left;
+}
+
+#shapePickerContainer {
+    display: inline-block;
+    height: 25px;
+    margin-left: 180px;
+    text-align: left;
+}
+
+#shapePickerLabel {
+    display: inline-block;
+    position: absolute;
+    line-height: 25px;
+}
+
+#shapePickerList {
+    height: 25px;
+    margin-left: 45px;
+}
+
+#shapePickerList li {
+    margin-left:10px;
+    height: 25px;
+}
+
+#shapePickerList li label{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+#shapePickerList .circleRadio .check{
+    display: inline-block;
+    position: absolute;
+    border: 3px solid #AAAAAA;
+    border-radius: 100%;
+    top: 0;
+    height: 18px;
+    width: 18px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+#shapePickerList .squareRadio .check{
+    display: inline-block;
+    position: absolute;
+    border: 3px solid #AAAAAA;
+    border-radius: 0;
+    top: 0;
+    height: 18px;
+    width: 18px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+#shapePickerList .circleRadio .check::before {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 10px;
+    width: 10px;
+    top: 4px;
+    left: 4px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+#shapePickerList .squareRadio .check::before {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    border-radius: 0;
+    height: 10px;
+    width: 10px;
+    top: 4px;
+    left: 4px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+/*
+===== Chapter Precision Settings =====
+*/
+
+#chapterSettingsLabelContainer {
+    height: 30px;
+    width: 200px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+#chapterSettingsLabelContainer svg {
+    height:22px;
+    width:22px;
+    padding-top:9px;
+    padding-bottom:9px;
+}
+
+#chapterSettingsLabel {
+    display: inline-block;
+}
+
+#chapterSettingsLabelContainer:hover {
+    color: #00B0FF;
+}
+
+#chapterSettingsLabelContainer:hover path {
+    fill: #00B0FF;
+}
+
+#chapterSettingsLabelContainer:active {
+    color: #0091EA;
+}
+
+#chapterSettingsLabelContainer:active path {
+    fill: #0091EA;
+}
+
+#chapterPrecisionSegmentedControl {
+    width: 300px;
+    font-size: 12px;
+}
+
+#chapterSettingsContainer {
+    display: none;
+}
+
+#noMarginsContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 235px;
+}
+
+#rowIsYearContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 188px;
+}
+
+/*
+===== Chapter Length Settings =====
+*/
+
+#chapterSegmentsLabel {
+    margin-top: 15px;
+}
+
+#chapterLengthSegmentedControl {
+    width: 200px;
+    font-size: 12px;
+}
+
+#chapterLengthsLabelContainer {
+    display: inline-block;
+    position: relative;
+    height: 100px;
+    width: 40px;
+    vertical-align:bottom;
+    text-align: right;
+}
+
+#chapterLengthsYearsLabel {
+    position: absolute;
+    bottom: 51px;
+    width: 40px;
+    font-weight:500;
+}
+
+#chapterLengthsMonthsLabel {
+    position: absolute;
+    bottom: 14px;
+    width: 40px;
+    font-weight:500;
+    font-size:9.5px;
+}
+
+#chapterLengthsSpecifyContainer {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#chapterLengthStackView {
+    display: inline-block;
+    width:300px;
+    height:100px;
+    vertical-align: middle;
+    text-align: left;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+#chapterLengthStackView::-webkit-scrollbar {
+    display: none;
+}
+
+.chapter {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height:100px;
+    width:40px;
+    margin-left:3px;
+    margin-right:3px;
+}
+
+.chapterNum {
+    text-align: center;
+    font-size: 18px;
+    font-weight:400;
+}
+
+.yearsInput {
+    position: absolute;
+    bottom: 45px;
+    display: block;
+    margin: 0 auto;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+    outline-width: 0;
+}
+
+.monthsInput {
+    position: absolute;
+    bottom: 5px;
+    display: block;
+    margin: 0 auto;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+    outline-width: 0;
+}
+
+#firstChapterYearsInput {
+    border: 1px solid #B71C1C;
+}
+
+#schoolAgeLabel {
+    position: absolute;
+    bottom: 0px;
+    font-size: 9px;
+    width: 40px;
+    text-align: center;
+    white-space: normal;
+    color: #B71C1C;
+}
+
+#modifyChaptersContainer {
+    display: inline-block;
+    position: relative;
+    height: 100px;
+    width: 40px;
+    vertical-align: bottom;
+}
+
+#modifyChaptersContainer svg {
+    width: 30px;
+    height: 30px;
+    padding-bottom: 0;
+    padding-top: 0;
+    position: absolute;
+    left: 0;
+}
+
+
+#addChapterButton {
+    position: absolute;
+    bottom: 44px;
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid #01579B;
+    border-bottom: 2px solid #01579B;
+    border-radius: 5px;
+    background-color: #0288D1;
+}
+
+#addChapterButton svg path {
+    fill: #ffffff;
+}
+
+#addChapterButton:hover {
+    background-color: #29B6F6;
+}
+
+#addChapterButton:active {
+    background-color: #01579B;
+}
+
+#removeChapterButton {
+    position: absolute;
+    bottom: 6px;
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid #01579B;
+    border-bottom: 2px solid #01579B;
+    border-radius: 5px;
+    background-color: #0288D1;
+}
+
+#removeChapterButton svg g {
+    fill: #ffffff;
+}
+
+#removeChapterButton:hover {
+    background-color: #29B6F6;
+}
+
+#removeChapterButton:active {
+    background-color: #01579B;
+}
+
+#chapterLengthsFixedContainer {
+    margin-top: 15px;
+    display: none; /*TEMPORARY UNTIL THE CORRECT CONTAINER IS CHOSEN ON LAUNCH TO DISPLAY*/
+}
+
+#chapterLengthsFixedYearsLabel {
+    display: inline-block;
+    margin-right: 2px;
+}
+
+#fixedYearsInput {
+    display: inline-block;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    outline-width: 0;
+    border: 1px solid #01579B;
+}
+
+#chapterLengthsFixedMonthsLabel {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 2px;
+}
+
+#fixedMonthsInput {
+    display: inline-block;
+    margin-right:30px;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    outline-width: 0;
+    border: 1px solid #01579B;
+}
+
+#fixedYearsInput::-webkit-outer-spin-button,
+#fixedYearsInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#fixedMonthsInput::-webkit-outer-spin-button,
+#fixedMonthsInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.monthsInput::-webkit-outer-spin-button,
+.monthsInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.yearsInput::-webkit-outer-spin-button,
+.yearsInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*
+===== Misc Settings =====
+*/
+
+#fullscreenCheckboxContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 265px;
+}
+
+#hideUpdatesCheckboxContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 265px;
+}

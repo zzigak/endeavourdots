@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.1 (28215) - http://www.bohemiancoding.com/sketch -->
+    <title>Add</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-144.000000, -414.000000)" fill="#2E4063">
+            <path d="M162,428 L162,420.991803 C162,420.455306 161.54809,420 160.990631,420 L159.009369,420 C158.443353,420 158,420.444045 158,420.991803 L158,428 L150.991803,428 C150.455306,428 150,428.45191 150,429.009369 L150,430.990631 C150,431.556647 150.444045,432 150.991803,432 L158,432 L158,439.008197 C158,439.544694 158.45191,440 159.009369,440 L160.990631,440 C161.556647,440 162,439.555955 162,439.008197 L162,432 L169.008197,432 C169.544694,432 170,431.54809 170,430.990631 L170,429.009369 C170,428.443353 169.555955,428 169.008197,428 L162,428 L162,428 Z" id="Add"></path>
+        </g>
+    </g>
+</svg>

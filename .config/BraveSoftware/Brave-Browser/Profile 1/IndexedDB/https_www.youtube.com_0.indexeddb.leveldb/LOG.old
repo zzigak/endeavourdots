@@ -1,0 +1,19 @@
+2021/08/28-20:09:23.318 3acf0 Reusing MANIFEST /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/08/28-20:09:23.319 3acf0 Recovering log #96
+2021/08/28-20:09:23.330 3acf0 Reusing old log /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000096.log 
+2021/08/28-20:09:23.372 3acf0 Level-0 table #101: started
+2021/08/28-20:09:23.382 3acf0 Level-0 table #101: 926466 bytes OK
+2021/08/28-20:09:23.384 3acf0 Delete type=0 #96
+2021/08/28-20:09:27.139 3acfc Compacting 1@1 + 1@2 files
+2021/08/28-20:09:27.148 3acfc Generated table #102@1: 565 keys, 41130 bytes
+2021/08/28-20:09:27.148 3acfc Compacted 1@1 + 1@2 files => 41130 bytes
+2021/08/28-20:09:27.150 3acfc compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/08/28-20:11:41.673 3acf0 Level-0 table #104: started
+2021/08/28-20:11:41.684 3acf0 Level-0 table #104: 1026038 bytes OK
+2021/08/28-20:11:41.686 3acf0 Delete type=2 #101
+2021/08/28-20:11:41.686 3acf0 Delete type=0 #100
+2021/08/28-20:11:41.686 3acf0 Delete type=2 #98
+2021/08/28-20:12:55.584 3acf0 Compacting 1@1 + 1@2 files
+2021/08/28-20:12:55.590 3acf0 Generated table #105@1: 498 keys, 49518 bytes
+2021/08/28-20:12:55.590 3acf0 Compacted 1@1 + 1@2 files => 49518 bytes
+2021/08/28-20:12:55.592 3acf0 compacted to: files[ 0 0 1 0 0 0 0 ]

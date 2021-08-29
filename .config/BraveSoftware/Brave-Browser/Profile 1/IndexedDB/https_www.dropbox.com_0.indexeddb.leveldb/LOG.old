@@ -1,0 +1,6 @@
+2021/08/26-19:53:31.391 e7e36 Creating DB /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_www.dropbox.com_0.indexeddb.leveldb since it was missing.
+2021/08/26-19:53:31.399 e7e36 Reusing MANIFEST /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_www.dropbox.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/08/26-19:58:48.299 e9af3 Level-0 table #5: started
+2021/08/26-19:58:48.329 e9af3 Level-0 table #5: 969056 bytes OK
+2021/08/26-19:58:48.332 e9af3 Delete type=0 #3
+2021/08/26-19:58:48.334 e9af3 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

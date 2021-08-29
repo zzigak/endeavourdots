@@ -1,0 +1,6 @@
+2021/08/28-20:09:19.421 3 Reusing MANIFEST /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/Local Storage/leveldb/MANIFEST-000001
+2021/08/28-20:09:19.422 3 Recovering log #83
+2021/08/28-20:09:19.422 3 Reusing old log /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/Local Storage/leveldb/000083.log 
+2021/08/28-20:19:36.008 3 Level-0 table #88: started
+2021/08/28-20:19:36.013 3 Level-0 table #88: 16104 bytes OK
+2021/08/28-20:19:36.017 3 Delete type=0 #83

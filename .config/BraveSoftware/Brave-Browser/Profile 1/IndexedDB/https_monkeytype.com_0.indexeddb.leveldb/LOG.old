@@ -1,0 +1,7 @@
+2021/08/28-19:04:47.353 11852 Reusing MANIFEST /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_monkeytype.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/08/28-19:04:47.354 11852 Recovering log #68
+2021/08/28-19:04:47.354 11852 Reusing old log /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_monkeytype.com_0.indexeddb.leveldb/000068.log 
+2021/08/28-19:04:47.582 1184d Level-0 table #74: started
+2021/08/28-19:04:47.583 1184d Level-0 table #74: 586 bytes OK
+2021/08/28-19:04:47.585 1184d Delete type=0 #68
+2021/08/28-19:04:47.585 1184d Manual compaction at level-0 from '\x00\x13\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x14\x00\x00\x00' @ 0 : 0; will stop at (end)

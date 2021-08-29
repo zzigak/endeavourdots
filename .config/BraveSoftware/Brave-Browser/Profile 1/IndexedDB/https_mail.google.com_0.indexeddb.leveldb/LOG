@@ -1,0 +1,9 @@
+2021/08/27-21:50:57.113 b226c Reusing MANIFEST /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/08/27-21:50:57.113 b226c Recovering log #7
+2021/08/27-21:50:57.114 b226c Reusing old log /home/zileto/.config/BraveSoftware/Brave-Browser/Profile 1/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000007.log 
+2021/08/27-21:51:01.139 b226c Compacting 1@1 + 1@2 files
+2021/08/27-21:51:01.144 b226c Generated table #10@1: 289 keys, 370980 bytes
+2021/08/27-21:51:01.144 b226c Compacted 1@1 + 1@2 files => 370980 bytes
+2021/08/27-21:51:01.146 b226c compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/08/27-21:51:01.146 b226c Delete type=2 #5
+2021/08/27-21:51:01.146 b226c Delete type=2 #8

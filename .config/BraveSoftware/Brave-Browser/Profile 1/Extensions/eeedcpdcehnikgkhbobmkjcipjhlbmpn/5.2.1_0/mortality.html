@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>New Tab</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/sidepanel.css">
+  <link rel="stylesheet" href="css/segmented-controls.css">
+  <link rel="stylesheet" href="css/cs-select.css">
+  <link rel="stylesheet" href="css/cs-skin-elastic.css">
+  <link rel="stylesheet" href="css/magic-check.css">
+</head>
+<body>
+
+<div id="theSidePanel" class="sidePanel">
+  <div id="fadedForeground"></div>
+  <ul class="navBar">
+    <li id="aboutButtonLI"><a id="aboutButton" class="UnpressedButton">
+      <img class="svg" src="assets/Info.svg">
+      <span></span>
+    </a></li>
+    <li><a id="updatesButton" class="UnpressedButton">
+      <img class="svg" src="assets/List.svg">
+      <span></span>
+    </a></li>
+    <li><a id="themeButton" class="UnpressedButton">
+      <img class="svg" src="assets/ColorPalette.svg">
+      <span></span>
+    </a></li>
+    <li><a id="donateButton" class="UnpressedButton">
+      <img class="svg" src="assets/Present.svg">
+      <span></span>
+    </a></li>
+    <li><a id="settingsButton" class="UnpressedButton">
+      <img class="svg" src="assets/Settings.svg">
+      <span></span>
+    </a></li>
+  </ul>
+
+  <a target="_blank" href="https://mortality.uservoice.com" id="feedback-button" class="right-navButtons">
+    <img class="svg" src="assets/InboxIn.svg">
+    <span>Feedback</span>
+  </a>
+  <a target="_blank" href="https://about.me/mattyayoh" id="contact-button" class="right-navButtons">
+    <img class="svg" src="assets/Send.svg">
+    <span>Matt Ao</span>
+  </a>
+
+  <a id="closeButton" class="UnpressedButton"><img class="svg" src="assets/CircleFilledClose.svg"></a>
+
+  <!-- BODY START -->
+  <div id="sidepanelBody"></div>
+</div>
+
+
+<div id="main">
+  <div id="circles"></div>
+  <div id="app"></div>
+
+  <div id="menu-button" class="WhiteMenu"><img id="menu-svg" class="svg" src="assets/Menu.svg"/>
+    <div id="updateBadge"></div>
+  </div>
+  <div id="update-bubble">
+    <div id="update-bubble-text">Mortality has been updated,<br>
+    check out the changes here!</div>
+  </div>
+</div>
+
+<script id="clock-template" type="text/x-handlebars-template">
+  <div class="timerContainer">
+    {{#if white}}
+    <div class="clock" id="white-timer-clock">{{hour}}{{minute}}{{second}}{{ms}} {{ampm}}</div>
+    {{/if}}
+    {{#if black}}
+    <div class="clock" id="black-timer-clock">{{hour}}{{minute}}{{second}}{{ms}} {{ampm}}</div>
+    {{/if}}
+  </div>
+</script>
+
+<script id="timeup-template" type="text/x-handlebars-template">
+  <div class="timerContainer">
+    {{#if white}}
+    <div class="timeup" id="white-timeup">{{message}}</div>
+    {{/if}}
+    {{#if black}}
+    <div class="timeup" id="black-timeup">{{message}}</div>
+    {{/if}}
+  </div>
+</script>
+
+<script id="age-template" type="text/x-handlebars-template">
+  {{#if white}}<div class="timerTitleWhite" id="timerTitle">{{title}}</div>{{/if}}
+  {{#if black}}<div class="timerTitleBlack" id="timerTitle">{{title}}</div>{{/if}}
+
+  {{#if white}}<div class="timerContainer blackText">{{/if}}
+  {{#if black}}<div class="timerContainer whiteText">{{/if}}
+    {{#if year}}
+    <div id="yearContainer" class="timerUnitContainer">
+      <div id='year-number' class="timer-value timer">{{year}}</div>
+      <div class='timer-label'>YEARS</div>
+    </div>
+    {{/if}}
+    {{#if month}}
+    <div id="monthContainer" class="timerUnitContainer">
+      <div id='month-number' class="timer-value timer">{{month}}</div>
+      <div class='timer-label'>MONTHS</div>
+    </div>
+    {{/if}}
+    {{#if day}}
+    <div id="dayContainer" class="timerUnitContainer">
+      <div id='day-number' class="timer-value timer">{{day}}</div>
+      <div class='timer-label'>DAYS</div>
+    </div>
+    {{/if}}
+    {{#if hour}}
+    <div id="hourContainer" class="timerUnitContainer">
+      <div id='hour-number' class="timer-value timer">{{hour}}</div>
+      <div class='timer-label'>HOURS</div>
+    </div>
+    {{/if}}
+    {{#if minute}}
+    <div id="minContainer" class="timerUnitContainer">
+      <div id='minute-number' class="timer-value timer">{{minute}}</div>
+      <div class='timer-label'>MINUTES</div>
+    </div>
+    {{/if}}
+    {{#if second}}
+    <div id="secContainer" class="timerUnitContainer">
+      <div id='second-number' class="timer-value timer">{{second}}</div>
+      <div class='timer-label' id='seconds-label'>SECONDS</div>
+    </div>
+    {{/if}}
+    {{#if ms}}
+    <div id="msContainer" class="timerUnitContainer">
+      <div id='milli-number' class="timer-value timer">{{ms}}</div>
+      <div class='timer-label'>MS</div>
+    </div>
+    {{/if}}
+    {{#if decimal}}
+    <div id="decimalContainer" class="timerUnitContainer">
+      <div id='decimal-number' class="decimal-timer">{{decimal}}</div>
+    </div>
+    {{/if}}
+	</div>
+</script>
+
+<script id="about-template" type="text/x-handlebars-template">
+  <img id="banner" src="assets/popup.png">
+  <hr id="banner-hr">
+  <div id="aboutContainer">
+    <div id="aboutContent">
+      Mortality is a new tab extension that reminds you of your precise age.<br>
+      A bitter-sweet motivational tool; it illustrates how little time we have.<br>
+      By default, circles represent months, for the average lifespan of 78 years.<br>
+      As you age, the circles fill, and are split into the main Chapters of your life.<br>
+      <br><br>
+
+      Get busy living, or get busy dying.<br>
+      You can never go back :)
+
+    </div>
+    <br><br><br>
+    <div id="uninstallHeader">How To Uninstall:</div>
+    <div id="uninstallText">Enter in your address bar: "chrome://extensions"<br> Find mortality, and click on the trash can icon on the right</div>
+  </div>
+  <label id="link-label" for="link-input">I'm not a fan of pre-canned share posts<br>If you would like to support this extension, please share this link:</label>
+  <input id="link-input" type="text" value="http://goo.gl/vADzdb" class="field left" readonly>
+</script>
+
+<script id="updates-template" type="text/x-handlebars-template">
+  <div id="updatesContainer">
+    <div id="updatesContent">
+      <div class="version">Feedback is Appreciated ^^</div>
+      <br>
+      <div id="v5.2.1" class="version">Version 5.2.1 [3/10/2021]</div>
+      <ul>
+        <li>Howdy! It's been a long time, thanks for keeping Mortality around all these years</li>
+        <li>I have found myself a new helper, so we will be working to push out all the updates ya'll have been requesting for so long</li>
+        <li>Her name is Emily Seal, her first update:</li>
+        <li>Updated stylings for decimal shortest precision (it looks much better now)</li>
+        <li>Bugfixes and improvements</li>
+      </ul>
+      <div id="v5.2.0" class="version">Version 5.2.0 [1/6/2018]</div>
+      <ul>
+        <li>Happy new year!  The backlog has gotten quite massive over the last (almost) year. I haven't been able to fix everything, but I tried to pick some of the popular requests to keep the extension fresh for you guys.  Hope you enjoy :)</li>
+        <li>You can now make it so each row of your progress will represent a year</li>
+        <li>Fixed issues with day/week calculations, week progress now fills in (seemingly) perfectly</li>
+        <li>Your projected final date is now displayed under the survey</li>
+        <li>You can now view total global population</li>
+        <li>Other bugfixes and enhancements, thanks again for the 30+ people submitting feedback :)</li>
+      </ul>
+      <div id="v5.1.1" class="version">Patch 5.1.1 [3/19/2017]</div>
+      <ul>
+        <li>Accidentally broke theme changing.  Oops</li>
+        <li>Small bugfixes and enhancements</li>
+      </ul>
+      <div id="v5.1.0" class="version">Version 5.1.0 [3/12/2017]</div>
+      <ul>
+        <li>"Largest Precision" let's you choose the largest unit to display in the timer</li>
+        <li>"Smallest Precision" now has "Decimal", if you prefer seeing a single number</li>
+        <li>More bugfixes from reports ya'll have sent in</li>
+        <li>This version has a higher risk for bugs (spent less time testing), if I could ask for your time, please <a id="escLink" target="_blank" href="https://mortality.uservoice.com">report a bug</a> if you see it</li>
+      </ul>
+      <div id="v5.0.6" class="version">Patch 5.0.6 [3/6/2017]</div>
+      <ul>
+        <li>A lot of you were asking for it, so I pushed out a quick implementation-- You can now add a title to your timer</li>
+      </ul>
+      <div id="v5.0.5" class="version">Patch 5.0.5 [3/5/2017]</div>
+      <ul>
+        <li>Update popover annoying you?  New setting to hide it</li>
+        <li>Fixed a few bugs you folks have reported.  Sorry it's taken so long to patch</li>
+        <li>Setting to use full screen for life progress</li>
+        <li>Note that my uservoice account has expired, so I cannot reply to bug tickets.  I can however, still add comments to feature requests, so keep 'em coming :)</li>
+      </ul>
+      <div id="v5.0.4" class="version">Patch 5.0.4 [2/13/2017]</div>
+      <ul>
+        <li>Sorry for the frequent updates, in the future I'll fix more things at once so ya'll don't get bothered.  This font thing has just been a pain</li>
+        <li>New setting for larger font.  May need to add more settings to customize font in the future, based off of the feedback</li>
+      </ul>
+      <div id="v5.0.3" class="version">Patch 5.0.3 [2/11/2017]</div>
+      <ul>
+        <li>Got my hands on a Windows machine (thanks for the screenshots, as well)</li>
+        <li>Removed the text stroking, replaced with shadow.  <a id="escLink" target="_blank" href="https://gist.github.com/dalethedeveloper/1846552">Unfortunately stroking just looks bad on Windows</a></li>
+        <li>From suggestions, slightly bumped up the font sizes across the board, as well.  If it's too big, let me know.  In that case, I'll have to throw in a setting for that</li>
+        <li>Couple more bug fixes, keep the reports coming!</li>
+      </ul>
+      <div id="v5.0.2" class="version">Patch 5.0.2 [2/11/2017]</div>
+      <ul>
+        <li>Moved off of google support.  Please to go <a id="escLink" target="_blank" href="https://mortality.uservoice.com">mortality.uservoice.com</a> to submit feature requests or bug reports</li>
+        <li>Fixed a couple bugs you folks found, thanks again for the help :)</li>
+        <li>Still tweaking the font a little.  Please keep up the feedback!  I'm especially concerned about how it looks on Windows machines</li>
+      </ul>
+      <div id="v5.0.1" class="version">Patch 5.0.1 [2/10/2017]</div>
+      <ul>
+        <li>A lot of feedback coming in that the font is too small<br>
+        So I wanted to release a patch ASAP<br>
+        I think it may be a Windows thing?  But I tweaked it a little <br>
+        Let me know if it needs more, screenshots and specific preferences help a lot</li>
+      </ul>
+      <div id="v5.0.0" class="version">Major Version 5 [2/10/2017]</div>
+      <ul>
+        <li>NOTE: I changed the backend, so I may have lost some settings.  Sorry 😕</li>
+        <li>NOTE2: I also fear I introduced some bugs.  <a id="escLink" target="_blank" href="https://mortality.uservoice.com">Please report them</a>, and I'll fix ASAP</li>
+        <li>Totally re-skinned the settings, custom controls everywhere!</li>
+        <li>Specify the length of time a circle represents</li>
+        <li>Check out how many people are older or younger than you on Earth</li>
+        <li>Life progress now calculates to fill the entire window</li>
+        <li>Specify how many years you want to live</li>
+        <li>Specify how many chapters you have</li>
+        <li>24-hour time</li>
+        <li>Fixed bugs reported through the Google Feedback</li>
+      </ul>
+      <div id="v4.1.0" class="version">Version 4.1.0 [10/31/2016]</div>
+      <ul>
+        <li>You can make the Countdown count daily to a specific time, or something like the end of the workday.</li>
+        <li>You can now choose a Time Up Message.</li>
+        <li>Couple of bug fixes that came through from yesterday, Thanks for the bug reports and feedback!</li>
+        <li>I'll make the UX bareable soon, sit tight :)</li>
+      </ul>
+      <div id="v4.0.0" class="version">Major Version 4 [10/30/2016]</div>
+      <ul>
+        <li>This is a big one, added the highly requested Countdown.</li>
+        <li>There is a new panel where you can toggle it ON/OFF.</li>
+        <li>Fill out a survey to guess your deathdate, Data is pulled from World Health Organization.</li>
+        <li>Or specify an exact date if you have a deadline, event, or if you have an idea of when you're gonna die.</li>
+        <li>Fixed a lot of edge cases with the month/day calculation, Thanks to everyone who gave feedback on bugs!</li>
+        <li>It's very likely I am still missing edge cases, I promise I'll be more active on fixing those quickly :)</li>
+        <li>Yes sorry I know my UX is horrible.  You'll figure it out ^^</li>
+        <li>I kinda rushed to push this out, but will polish soon.</li>
+        <li>#agile</li>
+      </ul>
+      <div id="v3.4.2" class="version">Version 3.4.2 [11/12/2015]</div>
+      <ul>
+        <li>Bugs fixed with month/day calculations from last release-- though I may have missed some cases, please let me know if your age doesn't seem right.</li>
+        <li>I have been watching the surveys!  Default is now Dark.</li>
+        <li>I'm changing the themes again in the next release, so if you would like changes, please fill out the survey below.</li>
+      </ul>
+      <div id="v3.4.1" class="version">Version 3.4.1 [11/11/2015]</div>
+      <ul>
+        <li>I want to update themes!  Please fill out <a href="http://goo.gl/forms/61S5Mr3g65">this survey</a>.</li>
+        <li>Numbers now pop when they go up.</li>
+        <li>Months & Days now what you expect.</li>
+        <li>Updated font styling.</li>
+        <li>Fixed a few bugs you guys found :)</li>
+      </ul>
+      <div id="v3.3.1" class="version">Version 3.3.1 [5/16/2015]</div>
+      <ul>
+        <li>Fix for issue with positive timezone offsets from UTC.</li>
+      </ul>
+      <div id="v3.3.0" class="version">Version 3.3.0 [4/5/2015]</div>
+      <ul>
+        <li>You can now show squares instead of circles for Chapters.</li>
+        <li>Fix settings sizing for smaller screens.</li>
+        <li>Add Cupid, Rasta, Sky themes. Changed Retro again.</li>
+        <li>Rephrase settings for clarity.</li>
+        <li>Added an update bubble.</li>
+      </ul>
+      <div id="v3.2.0" class="version">Version 3.2.0 [3/26/2015]</div>
+      <ul>
+        <li>Actually following reasonable version numbers now.</li>
+        <li>Ability to specify precision of your age.</li>
+        <li>Can hide circles.</li>
+        <li>Can show current time instead of your age.</li>
+        <li>Added fields to allow you to change the length of your chapters.</li>
+        <li>Added an eighth chapter, it is defaulted to 0 years.</li>
+        <li>Update Themes.</li>
+        <li>Refactoring to decrease burden of computations.</li>
+      </ul>
+      <div id="v3.0.0" class="version">Major Version 3 [1/8/2015]</div>
+      <ul>
+        <li>Fix for the current month circle filling the wrong way.</li>
+        <li>Add the ability to remove the age timer.</li>
+        <li>Fix for cancel button inconsistency.</li>
+        <li>Changing formatting for settings & info.</li>
+      </ul>
+      <div id="v2.0.0" class="version">Major Version 2 [12/25/2014]</div>
+      <ul>
+        <li>Ability to add time to birth date.</li>
+        <li>Cancel button in settings.</li>
+        <li>Info button on bottom left.</li>
+        <li>Info popup you are looking at right now.</li>
+        <li>Fix for leap days miscalculating age.</li>
+        <li>Make "Retro" less ugly. If you have a theme idea let me know.</li>
+      </ul>
+      <div id="v1.0.0" class="version">Major Version 1 [12/20/2014]</div>
+      <ul>
+        <li>Add birthday.</li>
+        <li>Circles indicating months lived.</li>
+        <li>Circles split into chapters.</li>
+        <li>Themes added.</li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+<script id="theme-template" type="text/x-handlebars-template">
+  <div id="theme-container">
+    <div id="themeSelectContainer">
+      <label id="themeSelectLabel" for="themeSelectDropdown">Select Theme</label>
+      <select id="themeSelectDropdown" class="cs-select cs-skin-elastic">
+        <option value="default">Default</option>
+        <option value="light">Light</option>
+        <option value="dawn">Dawn</option>
+        <option value="dusk">Dusk</option>
+        <option value="twilight">Twilight</option>
+        <option value="retro">Retro</option>
+        <option value="rainbowd">Rainbow-Dark</option>
+        <option value="rainbowl">Rainbow-Light</option>
+        <option value="cupid">Cupid</option>
+        <option value="rasta">Rasta</option>
+        <option value="sky">Sky</option>
+      </select>
+    </div>
+    <br><br>
+    Create-your-own-themes coming soon! 😀<br>
+    Note that these default themes come with 8 colors.  <br>
+    So for now, you can really only have 8 chapters specified.  <br>
+    Beyond that and it just repeats the last color ☹️
+  </div>
+</script>
+
+<script id="settings-template" type="text/x-handlebars-template">
+  <div id="settingsContainer">
+    <div id="timerSettingsSegmentedControl" class="segmented-control">
+      <input type="radio" name="sc-3-1" id="sc-3-1-1" checked="">
+      <input type="radio" name="sc-3-1" id="sc-3-1-2">
+      <input type="radio" name="sc-3-1" id="sc-3-1-3">
+      <label for="sc-3-1-1" data-value="Time Spent"">Time Spent</label>
+      <label for="sc-3-1-2" data-value="Time Left">Time Left</label>
+      <label for="sc-3-1-3" data-value="Extras">Extras</label>
+    </div>
+
+    <div id="extraTimerSettingsSegmentedControl" class="segmented-control">
+      <input type="radio" name="sc-3-2" id="sc-3-2-1" checked="">
+      <input type="radio" name="sc-3-2" id="sc-3-2-2">
+      <input type="radio" name="sc-3-2" id="sc-3-2-3">
+      <label for="sc-3-2-1" data-value="Clock">Clock</label>
+      <label for="sc-3-2-2" data-value="People">People</label>
+      <label for="sc-3-2-3" data-value="Hide">Hide</label>
+    </div>
+    <div id="timerSettingsGap"></div>
+    <div id="timerTypeSettingsContainer">
+      <div id="spentTimerContainer">
+      <div id="onboardingText"><div>Oh, Hello there.</div><div>Input your Birth Date to get started.</div></div>
+        <div id="dobDateContainer" class="notRed">
+          <label id="dobLabel" for="dobInput">When were you born?</label>
+          <input id="dobInput" class="InputTextfield" type="date">
+        </div>
+
+        <div id="dobTimeContainer">
+          <div id="dobTimeCheckboxContainer">
+            <input id="dobTimeCheckbox" class="magic-checkbox" type="checkbox">
+            <label for="dobTimeCheckbox">Add Time</label>
+          </div>
+          <input id="dobTimeInput" class="InputTextfield" type="time">
+        </div>
+
+        <div id="idealDeathContainer">
+          <label id="idealDeathLabel" for="idealDeathInput">How many years would you like to live?</label>
+          <input type="number" id="idealDeathInput" min="0" max="200" value="0">
+        </div>
+
+        <div id="timerTitleContainer">
+          <label id="timerTitleLabel" for="timerTitleInput">Title for Timer</label>
+          <input id="timerTitleInput" class="InputTextfield" type="text">
+        </div>
+      </div>
+
+      <div id="leftTimerContainer">
+        <div id="specifyDeathCheckboxContainer">
+          <input id="takeSurveyCheckbox" class="magic-checkbox" type="checkbox">
+          <label for="takeSurveyCheckbox">Take Life Expectancy Survey</label>
+        </div>
+
+        <div id="surveyUnitsSegmentedControl" class="segmented-control">
+          <input type="radio" name="sc-2-2" id="sc-2-2-1" checked="">
+          <input type="radio" name="sc-2-2" id="sc-2-2-2">
+          <label for="sc-2-2-1" data-value="Imperial">Imperial</label>
+          <label for="sc-2-2-2" data-value="Metric">Metric</label>
+        </div>
+
+        <div id="specifyDeathContainer">
+          <div id="dodDateContainer">
+            <label id="dodLabel" for="dodInput">Deadline?</label>
+            <input id="dodInput" class="InputTextfield" type="date">
+          </div>
+
+          <div id="dodTimeContainer">
+            <div id="dodTimeCheckboxContainer">
+              <input id="dodTimeCheckbox" class="magic-checkbox" type="checkbox">
+              <label for="dodTimeCheckbox">Add Time</label>
+            </div>
+            <input id="dodTimeInput" class="InputTextfield" type="time">
+          </div>
+
+          <div id="dailyCountdownCheckboxContainer">
+            <input id="dailyCountdownCheckbox" class="magic-checkbox" type="checkbox">
+            <label for="dailyCountdownCheckbox">Daily Countdown to This Time</label>
+          </div>
+        </div>
+
+        <div id="surveyDeathContainer">
+
+
+
+
+          <div class="surveyQuestionContainer">
+            <div>
+              <label id="gender-label" class="surveyQuestionLabel" for="gender-dropdown">Gender?</label>
+              <select id="gender-dropdown" class="surveyQuestionDropdown">
+                <option value="DNE"></option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div>
+              <label id="ethnicity-label" class="surveyQuestionLabel" for="ethnicity-dropdown">Ethnicity?</label>
+              <select id="ethnicity-dropdown" class="surveyQuestionDropdown">
+                <option value="DNE"></option>
+                <option value="asian">Asian or Arabic</option>
+                <option value="black">Black</option>
+                <option value="latino">Latin American</option>
+                <option value="native">Native American</option>
+                <option value="white">White</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div>
+              <label id="drinking-label" class="surveyQuestionLabel" for="precision-dropdown">How often do you drink?</label>
+              <select id="drinking-dropdown" class="surveyQuestionDropdown">
+                <option value="DNE"></option>
+                <option value="never">Never</option>
+                <option value="monthly">~1 Month</option>
+                <option value="weekly">~1 Week</option>
+                <option value="daily">~1 Day</option>
+                <option value="alcoholic">Alcoholic</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div>
+              <label id="smoking-label" class="surveyQuestionLabel" for="precision-dropdown">How often do you smoke?</label>
+              <select id="smoking-dropdown" class="surveyQuestionDropdown">
+                <option value="DNE"></option>
+                <option value="never">Never</option>
+                <option value="monthly">~1 Pack/Month</option>
+                <option value="weekly">~1 Pack/Week</option>
+                <option value="daily">~1 Pack/Day</option>
+                <option value="drinking">Only when drinking</option>
+                <option value="marijuana">tree fiddy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div>
+              <label id="exercise-label" class="surveyQuestionLabel" for="precision-dropdown">How often do you exercise?</label>
+              <select id="exercise-dropdown" class="surveyQuestionDropdown">
+                <option value="DNE"></option>
+                <option value="fiveplus">5+ Times/Week</option>
+                <option value="threefour">3-4 Times/Week</option>
+                <option value="onetwo">~1-2 Times/Week</option>
+                <option value="rarely">Rarely</option>
+                <option value="never">Never</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div id="height-label" class="surveyQuestionLabel">How tall are you?</div>
+            <div id="heightMetricContainer" class="surveyQuestionDropdown">
+              <div id="heightCM-container">
+                <label id="heightCM-label" class="surveyQuestionLabel" for="heightCM-dropdown">cm</label>
+                <select id="heightCM-dropdown" class="surveyQuestionIntegerDropdown">
+                  <option value="DNE"></option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                  <option value="32">32</option>
+                  <option value="33">33</option>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+                  <option value="36">36</option>
+                  <option value="37">37</option>
+                  <option value="38">38</option>
+                  <option value="39">39</option>
+                  <option value="40">40</option>
+                  <option value="41">41</option>
+                  <option value="42">42</option>
+                  <option value="43">43</option>
+                  <option value="44">44</option>
+                  <option value="45">45</option>
+                  <option value="46">46</option>
+                  <option value="47">47</option>
+                  <option value="48">48</option>
+                  <option value="49">49</option>
+                  <option value="50">50</option>
+                  <option value="51">51</option>
+                  <option value="52">52</option>
+                  <option value="53">53</option>
+                  <option value="54">54</option>
+                  <option value="55">55</option>
+                  <option value="56">56</option>
+                  <option value="57">57</option>
+                  <option value="58">58</option>
+                  <option value="59">59</option>
+                  <option value="60">60</option>
+                  <option value="61">61</option>
+                  <option value="62">62</option>
+                  <option value="63">63</option>
+                  <option value="64">64</option>
+                  <option value="65">65</option>
+                  <option value="66">66</option>
+                  <option value="67">67</option>
+                  <option value="68">68</option>
+                  <option value="69">69</option>
+                  <option value="70">70</option>
+                  <option value="71">71</option>
+                  <option value="72">72</option>
+                  <option value="73">73</option>
+                  <option value="74">74</option>
+                  <option value="75">75</option>
+                  <option value="76">76</option>
+                  <option value="77">77</option>
+                  <option value="78">78</option>
+                  <option value="79">79</option>
+                  <option value="80">80</option>
+                  <option value="81">81</option>
+                  <option value="82">82</option>
+                  <option value="83">83</option>
+                  <option value="84">84</option>
+                  <option value="85">85</option>
+                  <option value="86">86</option>
+                  <option value="87">87</option>
+                  <option value="88">88</option>
+                  <option value="89">89</option>
+                  <option value="90">90</option>
+                  <option value="91">91</option>
+                  <option value="92">92</option>
+                  <option value="93">93</option>
+                  <option value="94">94</option>
+                  <option value="95">95</option>
+                  <option value="96">96</option>
+                  <option value="97">97</option>
+                  <option value="98">98</option>
+                  <option value="99">99</option>
+                </select>
+              </div>
+
+              <div id="heightMeters-container">
+                <label id="heightMeters-label" class="surveyQuestionLabel" for="heightMeters-dropdown">Meters</label>
+                <select id="heightMeters-dropdown" class="surveyQuestionIntegerDropdown">
+                  <option value="DNE"></option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+            </div>
+            <div id="heightDropdownContainer" class="surveyQuestionDropdown">
+              <div id="heightInches-container">
+                <div>
+                  <label id="heightInches-label" class="surveyQuestionLabel" for="heightInches-dropdown">Inches</label>
+                  <select id="heightInches-dropdown" class="surveyQuestionIntegerDropdown">
+                    <option value="DNE"></option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="heightFeet-container">
+                <div>
+                  <label id="heightFeet-label" class="surveyQuestionLabel" for="heightFeet-dropdown">Feet</label>
+                  <select id="heightFeet-dropdown" class="surveyQuestionIntegerDropdown">
+                    <option value="DNE"></option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div id="imperialWeightContainer">
+              <label for="weightTextfield" class="surveyQuestionLabel">How much do you weigh? <b>(lbs)</b></label>
+              <input type="number" id="weightTextfield" min="0" max="500">
+            </div>
+            <div id="metricWeightContainer">
+              <label for="metricWeightTextfield" class="surveyQuestionLabel">How much do you weigh? <b>(kg)</b></label>
+              <input type="number" id="metricWeightTextfield" min="0" max="500">
+            </div>
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div class="checkbox">
+              <input id="heartDisease-checkbox" class="right-magic-checkbox" type="checkbox">
+              <label for="heartDisease-checkbox" id="heartDisease-label">Family have a history of heart disease?</label>
+            </div>
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div class="checkbox">
+              <input id="clumsiness-checkbox" class="right-magic-checkbox" type="checkbox">
+              <label for="clumsiness-checkbox" id="clumsiness-label">Clumsy?</label>
+            </div>
+          </div>
+
+          <div>
+            <u>Your Projected Final Date:</u>
+            <br>
+            <span id="deathDateString"></span>
+          </div>
+          <br>
+          <font size="1"><i>*Rough life expectency data from the <a id="escLink" target="_blank" href="http://apps.who.int/gho/data/node.main.686?lang=en">World Health Organization</a></i></font>
+
+
+
+
+        </div>
+
+        <div id="timeupMessageContainer">
+          <label id="timeupMessageLabel" for="timeupMessageDropdown">Message When Time is Up:</label>
+          <select id="timeupMessageDropdown" class="cs-select cs-skin-elastic">
+            <option value="¯\_(ツ)_/¯">¯\_(ツ)_/¯</option>
+            <option value="Time's Up.">Time's Up.</option>
+            <option value="TIME IS UP">TIME IS UP</option>
+            <option value="YOU DONE">YOU DONE</option>
+            <option value="(ಠ_ಠ)">(ಠ_ಠ)</option>
+            <option value="(• ε •)">(• ε •)</option>
+            <option value="(⊙ω⊙)">(⊙ω⊙)</option>
+            <option value="(╥﹏╥)">(╥﹏╥)</option>
+            <option value="( •᷄ὤ•᷅)">( •᷄ὤ•᷅)</option>
+            <option value="ლ(ಠ益ಠლ)">ლ(ಠ益ಠლ)</option>
+            <option value="(ﾉಥДಥ)ﾉ">(ﾉಥДಥ)ﾉ</option>
+            <option value="(´༎ຶ ω ༎ຶ`)">(´༎ຶ ω ༎ຶ`)</option>
+            <option value="(╯°□°)╯︵ ┻━┻">(╯°□°)╯︵ ┻━┻</option>
+            <option value="IT'S HAPPENING">IT'S HAPPENING</option>
+            <option value="ヽ(´▽`)/">ヽ(´▽`)/</option>
+            <option value="(☞ﾟヮﾟ)☞">(☞ﾟヮﾟ)☞</option>
+            <option value="ᕕ( ᐛ )ᕗ">ᕕ( ᐛ )ᕗ</option>
+          </select>
+        </div>
+
+        <div id="timerTitleContainer2">
+          <label id="timerTitleLabel2" for="timerTitleInput2">Title for Timer</label>
+          <input id="timerTitleInput2" class="InputTextfield" type="text">
+        </div>
+
+
+      </div>
+
+      <div id="clockTimerContainer">
+          <div id="twentyFourCheckboxContainer">
+            <input id="twentyFourCheckbox" class="magic-checkbox" type="checkbox">
+            <label for="twentyFourCheckbox">24-Hour Time</label>
+          </div>
+      </div>
+
+      <div id="peopleTimerContainer">
+        <ul id="peopleTimerList" class="mortalityRadioUL">
+          <li class="circleRadio">
+            <input type="radio" id="olderOption" name="peopleSelector">
+            <label for="olderOption">Older:</label>
+            <div class="check"></div>
+          </li>
+          <li class="circleRadio">
+            <input type="radio" id="youngerOption" name="peopleSelector">
+            <label for="youngerOption">Younger:</label>
+            <div class="check"></div>
+          </li>
+          <li class="circleRadio">
+            <input type="radio" id="totalOption" name="peopleSelector">
+            <label for="totalOption">Total:</label>
+            <div class="check"></div>
+          </li>
+        </ul>
+        <br><br>
+        <font size="1"><i>*Population data from <a id="escLink" target="_blank" href="https://esa.un.org/unpd/wpp/">United Nations, Population Division</a></i></font>
+
+      </div>
+    </div>
+    <div id="precisionContainer">
+      <div id="timerPrecisionContainer">
+        <div id="smallestPrecisionContainer">
+          <label id="precisionLabel" for="timerPrecisionDropdown">Smallest Precision</label>
+          <select id="timerPrecisionDropdown" class="cs-select cs-skin-elastic">
+            <option value="year">Years</option>
+            <option value="month">Months</option>
+            <option value="day">Days</option>
+            <option value="hour">Hours</option>
+            <option value="min">Minutes</option>
+            <option value="sec">Seconds</option>
+            <option value="ms">Milliseconds</option>
+            <option value="decimal">Use Decimal</option>
+          </select>
+        </div>
+        <div id="decimalPrecisionCheckboxContainer">
+          <input id="decimalPrecisionCheckbox" class="magic-checkbox" type="checkbox">
+          <label for="decimalPrecisionCheckbox">Extend Decimal Precision</label>
+        </div>
+        <div id="largestPrecisionContainer">
+          <label id="largestPrecisionLabel" for="largestPrecisionDropdown">Largest Precision</label>
+          <select id="largestPrecisionDropdown" class="cs-select cs-skin-elastic">
+            <option value="year">Years</option>
+            <option value="month">Months</option>
+            <option value="day">Days</option>
+            <option value="hour">Hours</option>
+            <option value="min">Minutes</option>
+            <option value="sec">Seconds</option>
+          </select>
+        </div>
+      </div>
+      <div id="clockPrecisionContainer">
+        <label id="precisionLabel" for="clockPrecisionDropdown">Clock Precision</label>
+        <select id="clockPrecisionDropdown" class="cs-select cs-skin-elastic">
+          <option value="ms">Milliseconds</option>
+          <option value="sec">Seconds</option>
+          <option value="min">Minutes</option>
+          <option value="hour">Hours</option>
+        </select>
+      </div>
+      <div id="populationPrecisionContainer">
+        <label id="precisionLabel" for="populationPrecisionDropdown">Population Precision</label>
+        <select id="populationPrecisionDropdown" class="cs-select cs-skin-elastic">
+          <option value="one">1's</option>
+          <option value="ten">10's</option>
+          <option value="hund">100's</option>
+          <option value="thou">1,000's</option>
+          <option value="tenthou">10,000's</option>
+          <option value="hundthou">100,000's</option>
+          <option value="milo">1,000,000's</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="largeFontCheckboxContainer">
+      <input id="largeFontCheckbox" class="magic-checkbox" type="checkbox">
+      <label for="largeFontCheckbox">Large Font</label>
+    </div>
+
+    <hr class="settingsContainerHR">
+
+
+    <div id="chapterSettingsLabelContainer">
+      <div id="chapterSettingsLabel">Chapters of Life</div>
+      <span id="openCloseChevron"><img class="svg" src="assets/ChevronCircleUp.svg"></span>
+    </div>
+    <hr id="chapterSettingsHR" class="settingsContainerHR">
+
+    <div id="chapterSettingsContainer">
+
+      <div id="progressSettingsContainer">
+        <div id="hideProgressContainer">
+          <input id="hideProgressCheckbox" class="magic-checkbox" type="checkbox">
+          <label for="hideProgressCheckbox">Hide Progress</label>
+        </div>
+        <div id="shapePickerContainer">
+          <div id="shapePickerLabel">Shape:</div>
+          <ul id="shapePickerList" class="mortalityRadioUL">
+            <li class="circleRadio">
+            <label for="circleOption">
+              <input type="radio" id="circleOption" name="shapeSelector">
+
+              <div class="check"></div>
+              
+            </label>
+            </li>
+
+            <li class="squareRadio">
+            <label for="squareOption">
+              <input type="radio" id="squareOption" name="shapeSelector">
+
+              <div class="check"></div>
+            </label>
+            </li>
+          </ul>
+        </div>
+
+        <div id="noMarginsContainer">
+          <input id="noMarginsCheckbox" class="magic-checkbox" type="checkbox">
+          <label for="noMarginsCheckbox">Remove margins from shapes</label>
+        </div>
+      </div>
+
+      <div id="chapterPrecisionLabel">Chapter Precision</div>
+      <hr class="segmentedControlLabelHR">
+      <div id="chapterPrecisionSegmentedControl" class="segmented-control">
+        <input type="radio" name="sc-4-1" id="sc-4-1-1" checked="">
+        <input type="radio" name="sc-4-1" id="sc-4-1-2">
+        <input type="radio" name="sc-4-1" id="sc-4-1-3">
+        <label for="sc-4-1-1" data-value="Weeks">Weeks</label>
+        <label for="sc-4-1-2" data-value="Months">Months</label>
+        <label for="sc-4-1-3" data-value="Years">Years</label>
+      </div>
+
+      <div id="rowIsYearContainer">
+        <input id="rowIsYearCheckbox" class="magic-checkbox" type="checkbox">
+        <label for="rowIsYearCheckbox">Show one year per row</label>
+      </div>
+
+      <div id="chapterSegmentsLabel">Chapter Lengths</div>
+      <hr class="segmentedControlLabelHR">
+      <div id="chapterLengthSegmentedControl" class="segmented-control">
+        <input type="radio" name="sc-2-1" id="sc-2-1-1" checked="">
+        <input type="radio" name="sc-2-1" id="sc-2-1-2">
+        <label for="sc-2-1-1" data-value="Specify">Specify</label>
+        <label for="sc-2-1-2" data-value="Fixed">Fixed</label>
+      </div>
+
+      <div id="chapterLengthsSpecifyContainer">
+        <div id="chapterLengthsLabelContainer">
+          <div id="chapterLengthsYearsLabel">Years:</div>
+          <div id="chapterLengthsMonthsLabel">Months:</div>
+        </div>
+        <div id="chapterLengthStackView">
+          <div class="chapter">
+            <div id="firstChapterNum" class="chapterNum">1st</div>
+            <input id="firstChapterYearsInput" type="number" class="yearsInput" min="0" max="100">
+            <div id="schoolAgeLabel">AGE You Started School</div>
+          </div>
+        </div>
+        <div id="modifyChaptersContainer">
+          <div id="addChapterButton"><img class="svg" src="assets/Add.svg"></div>
+          <div id="removeChapterButton"><img class="svg" src="assets/Remove.svg"></div>
+        </div>
+      </div>
+      <div id="chapterLengthsFixedContainer">
+          <div id="chapterLengthsFixedYearsLabel">Years:</div>
+          <input type="number" id="fixedYearsInput" min="0" max="100">
+          <div id="chapterLengthsFixedMonthsLabel">Months:</div>
+          <input type="number" id="fixedMonthsInput" min="0" max="11">
+      </div>
+    </div>
+
+    <div id="fullscreenCheckboxContainer">
+      <input id="fullscreenCheckbox" class="magic-checkbox" type="checkbox">
+      <label for="fullscreenCheckbox">Use full screen for life progress</label>
+    </div>
+
+    <div id="hideUpdatesCheckboxContainer">
+      <input id="hideUpdatesCheckbox" class="magic-checkbox" type="checkbox">
+      <label for="hideUpdatesCheckbox">Don't notify me of new updates</label>
+    </div>
+  </div>
+</script>
+
+<script id="donate-template" type="text/x-handlebars-template">
+  <img id="banner" src="assets/catChange.gif">
+  <hr id="banner-hr">
+  <div id="donate-container">
+  <br>
+    So for now, I won't be bothering with donations<br><br>
+
+    If you'd like to help me out, please leave a review <a id="escLink" target="_blank" href="https://chrome.google.com/webstore/detail/mortality-new-tab/eeedcpdcehnikgkhbobmkjcipjhlbmpn">on the webstore</a><br>
+    <br>
+    Also I'm a small business owner, so any "Likes" on either of my businesses (<a id="escLink" target="_blank" href="https://www.facebook.com/ESCTheRoom/">Escape Room</a>, <a id="escLink" target="_blank" href="https://www.facebook.com/nimbusktv/">Karaoke Lounge</a>) would mean a lot as well :)<br><br>
+  <hr id="banner-hr"><br>
+    One of my businesses is an <a id="escLink" target="_blank" href="https://www.esctheroom.com">Escape Room in East Lansing, Michigan</a><br>
+    If you're ever in town, use Promo Code: <b>MORTALITY</b> for 25% off ^^<br><br>
+  <hr id="banner-hr">
+  <br>
+
+  </div>
+</script>
+
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/handlebars.js"></script>
+
+<script src="js/classie.js"></script>
+<script src="js/selectFx.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+
+<script src="js/helpers.js"></script>
+<script src="js/accessors.js"></script>
+
+<script src="js/sidepanel.js"></script>
+<script src="js/mortality.js"></script>
+
+</body>
+</html>
